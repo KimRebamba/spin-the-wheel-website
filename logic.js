@@ -2,6 +2,7 @@ const form = document.querySelector("form");
 const spinButton = document.getElementById("spinButton");
 const itemList = document.getElementById("items");
 const input = document.getElementById("input");
+const deleteAll = document.getElementById("deleteAll");
 
 let items = [];
 
@@ -88,25 +89,37 @@ function addItem(itemName){
 
         renderItem(itemName);
 
-    }else{
-        alert("Item already exists.");
     }
 }
 
-
-
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const text = input.value;
 
-    if(text.trim() !== ""){
-        addItem(input.value);
-    }else{
-        alert("Please enter a valid item name.")
+    const text = input.value.trim();
+
+    if (text === "") {
+        alert("Please enter a valid item name.");
+        return;
+    }
+
+     
+    const newItems = text.split(/\s+/);
+
+    for (const item of newItems) {
+        addItem(item);
     }
 
     input.value = "";
-   
 });
+
+deleteAll.addEventListener("click", () => {
+    const allItems = document.querySelectorAll("li");
+    allItems.forEach((e) => {
+        e.remove();
+    });
+
+    items = [];
+    saveItems();
+})
 
 checkStorage();

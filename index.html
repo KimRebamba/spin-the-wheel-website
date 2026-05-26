@@ -4,32 +4,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Spin The Wheel!</title>
-    
 </head>
 <body>
+    <!-- <nav>
+        <span class="nav-logo">Spin The Wheel</span>
+        <div class="nav-right">
+            <a href="#">About</a>
+            <a href="#" class="nav-cta" id="navSpinBtn">Spin</a>
+        </div>
+    </nav> -->
+
     <main>
-        <div class = "main-box">
-            <div></div> 
+        <div class="main-box">
+            <div class="left-col">
+                <h1>
+                    Spin The Wheel by kim :P
+                    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                </h1>
+                <p>Add your items, hit spin, let the wheel decide. Simple as that.</p>
 
-            <h1>Spin The Wheel by kim</h1>
-            <p>Spin the wheel!</p>
+                <form>
+                    <input type="text" name="input" id="input" placeholder="Enter item here">
+                    <input type="submit" id="submit" value="Add">
+                </form>
 
-            <form>
-                <input type="text" name= "input" id="input" placeholder="Enter item here">
-                <input type="submit" id="submit">
-            </form>
+                <div id="result"></div>
+                <p>When you're done adding your items, press here:</p>
+                
+                <button id="spinButton">Spin!</button>
+              
+            </div>
 
-            <p>When you're done adding your items, press here:</p>
-            <button id = "spinButton">Spin!</button>
-
-            <div class = "items-box">
-                <h2>Your items:</h2>
-                <ul id = "items"></ul>
+            <div class="wheel-section">
+                <div class="wheel-container">
+                    <div class="pointer"></div>
+                    <canvas id="wheelCanvas" width="480" height="480"></canvas>
+                </div>               
+               
             </div>
         </div>
 
-     </main>
+        <div class="items-box">
+            <h2>Your items: <span class="action" id = "deleteAll">delete all?</span></h2>
+            <ul id="items"></ul>
+        </div>
+    </main>
 
     <script defer src="./logic.js"></script>
+    <script defer src="./theme.js"></script>
+    <script defer src="./wheel.js"></script>
 </body>
 </html>
